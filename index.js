@@ -9,7 +9,7 @@ function activatePlacesSearch(){
 function renderResult(result) {
 	return `
 		<div class='concertListing'>
-			<img src="${result.artistImage}" class="artistImg" alt="${result.artist}" width="74" height="74">
+			<img src="${result.artistImage}" class="artistImg" alt="${result.artist}" width='74' height='74'>
 			<span class='artistName'>${result.artist}</span><br>
 			${result.venue}, ${result.city}<br>
 			<a href="${result.ticketLink}">
@@ -19,6 +19,7 @@ function renderResult(result) {
 };
 
 function displayConcertListings(data) {
+	$('main').html(`<div id="concert-listings"></div>`)
 	const results = data.map((item, index) => renderResult(item));
 	$('#concert-listings').html(results);
 }
@@ -30,4 +31,4 @@ function watchSubmit() {
 	})
 }
 
-$(watchSubmit);
+watchSubmit();
