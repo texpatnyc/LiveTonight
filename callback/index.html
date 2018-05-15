@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>LiveTonight</title>
+	<meta name="description" content="Preview live concert footage of possible artists to see in your city tonight!">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+	<link href="./main.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+	<header>
+		<h1 role=banner id="logo">LiveTonight</h1>
+		<div id="formWrapper">
+			<p class="instructions">Enter your city:</p>
+			<form id="search-form">
+				<input type="text" placeholder="New York" id="search-term">
+				<input type="submit" name="submit">
+			</form>
+		</div>
+
+	</header>
+
+	<main role="main">
+
+		
+
+
+	</main>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="./datastore.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoBTaYyfmhXjOZG0V8fdWqgTaw-635yfw&libraries=places&callback=activatePlacesSearch" async defer></script>
+   	<script src="./index.js"></script>
+
+</body>
+</html>
