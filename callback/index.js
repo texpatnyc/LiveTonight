@@ -118,7 +118,7 @@ function getAccessToken() {
   return getParameterByName('access_token');
 }
 
-const accessToken = 'BQBkU6vinm6SioHamdB6vtFwUgmk6IaYbdaHKiYzBzqGXIERrVHeIGUWfS0xY9FUABQacCrsMkvz4JsAV1aBnRPN-gqpR9TR2F4t4xxU3MR-BbDHFDsWloU3lltbpIsQ8b6D71qyMlRrRCavgCf2Id2iydiwSxciY4w143d5toC3l-J5Eh1idPwYTAuLoKKO_4qBmLHJY1bLWnMQEbaJpFhTWIhh';
+const accessToken = 'BQBT2_YD3G-dkxFGbgBs_9rX9cPphh2gPSUN0D5df-mtzsV93bqT1YJ0U02olm-uLhffBBZr_4Mg4DdNDJhGJWz36HftN-wW6fS3tovBKkqN_QaT0aOlx_jNsa5Zy6QvPmwN697MRfX4pbVuapZjTgsidRxi2GfstBHitbXd6KW9xhWrZjfyCvDNYN6xgNedug0mnVw7tQOz0FUb8_7y088gljOi';
 
 //Get artists from spotify
 const getArtistsFromSpotify = (artist) => {
@@ -244,18 +244,12 @@ function spotifyAppInitiate() {
 	let spotifyArtistsTopTracks = [];
 	Promise.all(spotifyArtists)
 		.then(data => {
-			console.log(data);
 			const filteredData = data.filter(a => a.artists.items.length > 0);
-			console.log(filteredData);
 			spotifyArtistsIDs = filteredData.map(a => a.artists.items[0].id);
 			Promise.all(spotifyArtistsIDs.map(getArtistsTracksFromSpotify))
 				.then(data => {
-					console.log(data)
 					const filteredTracks = data.filter(a => a.tracks.length > 0);
-					console.log(filteredTracks);
-					debugger;
 					spotifyArtistsSingleTopTracks = filteredTracks.map(a => "spotify:track:" + a.tracks[0].id);
-					console.log(spotifyArtistsSingleTopTracks)
 					getClientInfoFromSpotify();
 				})
 		})
