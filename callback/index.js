@@ -27,7 +27,6 @@ function getMetroAreaIDFromSongKick(city) {
 		type: 'GET',
 		success: function(data) {
 			const metroAreaID = data.resultsPage.results.location[0].metroArea.id;
-			console.log(metroAreaID);
 			getConcertListingsFromSongKick(metroAreaID);
 		}
 	}
@@ -46,9 +45,7 @@ function getConcertListingsFromSongKick(id) {
 		dataType: 'json',
 		type: 'GET',
 		success: function(data) {
-			console.log(data);
 			let concerts = data.resultsPage.results.event;
-			console.log(concerts);
 			createArtistList(concerts);
 			displayConcertListings(concerts);
 		}
@@ -70,17 +67,12 @@ function formatDateForSongKick() {
 	songKickDate = `${yyyy}-${mm}-${dd}`
 }
 
-
-
-
-
-
 //Build Concert Listings
 function renderResult(result) {
 	return `
 		<div class='concertListing'>
 			<img src="https://images.sk-static.com/images/media/profile_images/artists/${result.performance[0].artist.id}/large_avatar" class="artistImg" alt="${result.performance[0].artist.displayName}" width='74' height='74'>
-			<a href="https://www.songkick.com/artists/${result.performance[0].artist.id}"
+			<a href="https://www.songkick.com/artists/${result.performance[0].artist.id}">
 				<span class='artistName'>${result.performance[0].artist.displayName}</span>
 			</a><br>
 			${result.venue.displayName}, ${result.venue.metroArea.displayName}, ${result.venue.metroArea.state.displayName}<br>
@@ -92,16 +84,15 @@ function renderResult(result) {
 
 //Display concert listings
 function displayConcertListings(data) {
-	$('main').html(`<div id="concert-listings"></div>`)
+	$('.main-container').html(`<div class ="left" id="concert-listings"></div><div class ="right" id="playlist-window"></div>`)
 	const results = data.map((item, index) => renderResult(item));
-	$('#concert-listings').html(results);
+	$('#concert-listings').html(`<a href="http://www.songkick.com"><img id="powered-by-songkick-logo" src="../images/powered-by-songkick-pink.png"></a></br>${results}`);
 }
 
 //Create array of artitsts from concert listings
 let artistList = []
 function createArtistList(data) {
 	artistList = data.map(a => a.performance[0].artist.displayName);
-	console.log(artistList);
 	spotifyAppInitiate();
 }
 
@@ -118,7 +109,7 @@ function getAccessToken() {
   return getParameterByName('access_token');
 }
 
-const accessToken = 'BQBT2_YD3G-dkxFGbgBs_9rX9cPphh2gPSUN0D5df-mtzsV93bqT1YJ0U02olm-uLhffBBZr_4Mg4DdNDJhGJWz36HftN-wW6fS3tovBKkqN_QaT0aOlx_jNsa5Zy6QvPmwN697MRfX4pbVuapZjTgsidRxi2GfstBHitbXd6KW9xhWrZjfyCvDNYN6xgNedug0mnVw7tQOz0FUb8_7y088gljOi';
+const accessToken = 'BQC7amGXEYFzJ6tYtsE4nyYA3bQdyn1UZCqp_7ZmtN_wX8NcIVNum8FRJSz2CY4kAJhk44ZYricne8Gba27btltdcJAJizGJBKxzYNYw95lBtOU3pa4N1srW9azlZPBeNL-Ost6dsV5PH4AZW2v1eFmS2rz1bvGh_feeaoivQLSyZ2XZqG9nLE9JHFCHrxKDK96Lf7trUFxzfORZ0a5erSaHJ9p5';
 
 //Get artists from spotify
 const getArtistsFromSpotify = (artist) => {
@@ -183,9 +174,8 @@ function getClientInfoFromSpotify() {
 
 
 //Create playlist
+
 let today = new Date().toLocaleString("en-US").split(',')[0];
-
-
 let playlistID;
 
 function createPlaylist(id) {
@@ -227,12 +217,61 @@ function addTracksToPlaylist(array) {
 			'Authorization': 'Bearer ' + accessToken
 		},
 		success: function() {
+			displaySpotifyPlaylist();
 			console.log('you made a playlist motherfucker!')
 		}  
 	}
 	$.ajax(settings);
 }
 
+// Display playlist in screen
+
+function displaySpotifyPlaylist() {
+	$('#playlist-window').html(`
+		<iframe src="https://open.spotify.com/embed/user/${clientID}/playlist/${playlistID}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+		</br>
+		<button class="save-playlist">Save Playlist</button>
+		`);
+	deletePlaylistFromSpotify();
+}
+
+// Unfollow Playlist in Spotify
+
+function deletePlaylistFromSpotify() {
+	let settings = {
+		async: true,
+		crossDomain: true,
+		url: `https://api.spotify.com/v1/users/${clientID}/playlists/${playlistID}/followers`,
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer ' + accessToken
+		},
+		success: function() {
+			console.log('Playlist deleted!')
+		}
+	}
+	$.ajax(settings);
+}
+
+// Save Playlist in Spotify
+
+function savePlaylistInSpotify() {
+	let settings = {
+		async: true,
+		crossDomain: true,
+		url: `https://api.spotify.com/v1/users/${clientID}/playlists/${playlistID}/followers`,
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer ' + accessToken
+		},
+		success: function() {
+			console.log('Playlist saved!')
+		}
+	}
+	$.ajax(settings);
+}
 
 
 //Initiate Spotify app
@@ -267,10 +306,10 @@ function watchSubmit() {
 		const queryTarget = $(e.currentTarget).find('#search-term');
 		const query = queryTarget.val();
 		getMetroAreaIDFromSongKick(query);
-		
-		
-
-
+	})	
+	$('.main-container').on('click', '.save-playlist', function(e) {
+		e.preventDefault();
+		savePlaylistInSpotify();
 	})
 }
 
