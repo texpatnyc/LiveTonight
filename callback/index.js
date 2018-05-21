@@ -44,8 +44,13 @@ function getConcertListingsFromSongKick(id) {
 		type: 'GET',
 		success: function(data) {
 			let concerts = data.resultsPage.results.event;
+			concerts.sort(function(a, b) {
+				return b.popularity - a.popularity
+			});
 			createArtistList(concerts);
+			console.log(concerts);
 			displayConcertListings(concerts);
+
 		}
 	}
 	$.ajax(settings);
@@ -69,13 +74,16 @@ function formatDateForSongKick() {
 function renderResult(result) {
 	return `
 		<div class='concertListing'>
-			<img src="https://images.sk-static.com/images/media/profile_images/artists/${result.performance[0].artist.id}/large_avatar" class="artistImg" alt="${result.performance[0].artist.displayName}" width='74' height='74'>
 			<a href="https://www.songkick.com/artists/${result.performance[0].artist.id}">
-				<span class='artistName'>${result.performance[0].artist.displayName}</span>
+				<img src="https://images.sk-static.com/images/media/profile_images/artists/${result.performance[0].artist.id}/large_avatar" 
+				class="artistImg" alt="${result.performance[0].artist.displayName}" width='74' height='74'>
+			</a>
+			<a href="https://www.songkick.com/artists/${result.performance[0].artist.id}">
+				<span class="artistName">${result.performance[0].artist.displayName}</span>
 			</a><br>
-			${result.venue.displayName}, ${result.venue.metroArea.displayName}, ${result.venue.metroArea.state.displayName}<br>
+			<span class="venue">${result.venue.displayName}, ${result.location.city}</span><br>
 			<a href="http://www.songkick.com/concerts/${result.id}">
-				<span class=button buy-tickets>Buy Tickets</span>
+				<button class="buy-tickets">BUY TICKETS</button>
 			</a>
 		</div>`
 };
@@ -106,9 +114,9 @@ function getAccessToken() {
   return getParameterByName('access_token');
 }
 
-//const accessToken = getAccessToken();
+const accessToken = getAccessToken();
 
-const accessToken = 'BQDdjwn-JzugPbnpicb29BJuKqrarM-3lVZy4Q5StNC3YVAbyoYWjta6Wp_saFChaQN-qdm3plQF3J1Py7jHDvrqv6CeHWrykN4W9EAaWXghK5uO8xLWASHiBlUftLbxX-03vg6uB5DGucNMqxTI0yk91AlkbcbNJl7RvJn1fUG_USS6UKE7labXmBojNruN8-lafn1aieOi-hzmaWRefVTTVBuO'
+//const accessToken = 'BQBRe0Fsu7SgsYpvDGOtm0TMZ8wLDWdHLRnc9MlofyqXTl9kTZixoRJvWlXQswkqf_u5k4z67ix2QIu39Ey_V676QtvvLp6UINTR1n67w-FwZHGje2Kxs7Msd6cj2GWkt5rqTxCypW1a2Cw2km9sxz-NwYYLnLB0ENSHggr2euzUhnL3qp54re1Z_YCcTBDaaQRAqdCcEM0m-SAt0dUDv_g7vT37'
 
 //Get artists from spotify
 const getArtistsFromSpotify = (artist) => {
@@ -226,9 +234,9 @@ function addTracksToPlaylist(array) {
 
 function displaySpotifyPlaylist() {
 	$('#playlist-window').html(`
-		<iframe src="https://open.spotify.com/embed/user/${clientID}/playlist/${playlistID}" width="400" height="600" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+		<iframe src="https://open.spotify.com/embed/user/${clientID}/playlist/${playlistID}" class="spotifyPlaylist" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 		</br>
-		<button class="save-playlist">Save Playlist</button>
+		<button class="save-playlist">SAVE PLAYLIST</button>
 		`);
 	deletePlaylistFromSpotify();
 }
@@ -244,9 +252,6 @@ function deletePlaylistFromSpotify() {
 		headers: {
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer ' + accessToken
-		},
-		success: function() {
-			console.log('Playlist deleted!')
 		}
 	}
 	$.ajax(settings);

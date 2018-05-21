@@ -5,10 +5,12 @@
 body {
   	font-family: 'Roboto', sans-serif;
   	background-color: #ffffff;
-/*  	background: url('https://i.imgur.com/xLEyi4i.jpg') no-repeat center fixed;*/ 
+  	background: url('https://i.imgur.com/xLEyi4i.jpg') no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
   	background-size: cover;
-  	color: #363946;
-
+  	color: black;
 }
 
 header {
@@ -17,11 +19,11 @@ header {
 }
 
 #logo {
-	border: black 3px solid;
-/*	text-shadow: 0px 0px 5px black;
-	box-shadow: 0px 0px 5px black;*/
+	border: white 3px solid;
+	text-shadow: 0px 0px 5px black;
+	box-shadow: 0px 0px 5px black;
 	width:200px;
-	color: black;
+	color: white;
 	padding: 10px;
 	margin-right: auto;
 	margin-left: auto;
@@ -29,13 +31,24 @@ header {
 }
 
 .getting-started {
-	width: 500px;
+	width: 80%;
+	max-width: 500px;
 	margin-right: auto;
 	margin-left: auto;
+	background-color: rgba(255,255,255,0.8);
+	border: black 1px solid;
+	border-radius: 10px;
+	padding: 10px;
+	padding-bottom: 20px;
+	line-height: 1.5;
+	text-align: center;
 }
 
 .spotifyConnectButton {
 	width: 200px;
 	display: block;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+
 }
