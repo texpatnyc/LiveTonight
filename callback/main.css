@@ -5,8 +5,8 @@
 body {
   	font-family: 'Roboto', sans-serif;
   	background-color: #ffffff;
-/*  	background: url('https://i.imgur.com/xLEyi4i.jpg') no-repeat center fixed; 
-  	background-size: cover;*/
+  	background: url('https://i.imgur.com/xLEyi4i.jpg') no-repeat center fixed; 
+  	background-size: cover;
   	color: #363946;
 
 }
@@ -19,6 +19,7 @@ header {
 .main-container {
 	display: flex;
 	width: 90%;
+	max-width: 1000px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -49,7 +50,7 @@ header {
 }
 
 #concert-listings {
-	background-color: white;
+	background-color: rgba(255,255,255,0.8);
 	border: black 1px solid;
 	border-radius: 5px;
 	display: block;
