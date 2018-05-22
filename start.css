@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 
-body {
+html {
   	font-family: 'Roboto', sans-serif;
   	background-color: #ffffff;
   	background: url('https://i.imgur.com/xLEyi4i.jpg') no-repeat center center fixed; 
@@ -16,6 +16,16 @@ body {
 header {
 	text-align: center;
 	width: 100%;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  color: white;
 }
 
 #logo {

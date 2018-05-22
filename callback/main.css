@@ -4,14 +4,7 @@
 
 html {
   	font-family: 'Roboto', sans-serif;
-  	background-color: #ffffff;
-  	background: url('https://i.imgur.com/xLEyi4i.jpg') no-repeat center center fixed; 
-  	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;
   	color: #363946;
-
 }
 
 header {
@@ -21,9 +14,24 @@ header {
 
 body {
 	position: relative;
-	margin: 0;
-	padding-bottom: 6rem;
-	min-height: 100%;
+	padding: 1rem 0 4rem 0;
+	min-height: 100vh;
+	background-color: #ffffff;
+  	background: url('https://i.imgur.com/xLEyi4i.jpg') no-repeat center center fixed; 
+  	background-size: cover;
+}
+
+footer {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+main {
+	overflow: hidden;
 }
 
 .main-container {
@@ -139,16 +147,6 @@ body {
 .spotifyPlaylist {
 	width: 80%;
 	height: 585px;
-}
-
-footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  text-align: center;
-  color: white;
 }
 
 .bottom {

@@ -91,7 +91,7 @@ function renderResult(result) {
 function displayConcertListings(data) {
 	$('.main-container').html(`<div class ="left" id="concert-listings"></div><div class ="right" id="playlist-window"></div>`)
 	const results = data.map((item, index) => renderResult(item));
-	$('#concert-listings').html(`<a href="http://www.songkick.com"><img id="powered-by-songkick-logo" src="../images/powered-by-songkick-pink.png"></a></br>${results.join('')}`);
+	$('#concert-listings').html(`<a href="http://www.songkick.com"><img id="powered-by-songkick-logo" src="../images/powered-by-songkick-pink.png" alt="Songkick Logo"></a></br>${results.join('')}`);
 }
 
 //Create array of artitsts from concert listings
@@ -233,7 +233,7 @@ function addTracksToPlaylist(array) {
 
 function displaySpotifyPlaylist() {
 	$('#playlist-window').html(`
-		<iframe src="https://open.spotify.com/embed/user/${clientID}/playlist/${playlistID}" class="spotifyPlaylist" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+		<iframe src="https://open.spotify.com/embed/user/${clientID}/playlist/${playlistID}" class="spotifyPlaylist" frameborder="0" allowtransparency="true" allow="encrypted-media" aria-label="Spotify Playlist"></iframe>
 		</br>
 		<button class="save-playlist">SAVE PLAYLIST</button>
 		`);
