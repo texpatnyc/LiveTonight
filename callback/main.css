@@ -19,6 +19,13 @@ header {
 	width: 100%;
 }
 
+body {
+	position: relative;
+	margin: 0;
+	padding-bottom: 6rem;
+	min-height: 100%;
+}
+
 .main-container {
 	display: flex;
 	width: 90%;
@@ -37,6 +44,10 @@ header {
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
+}
+
+.instructions {
+	margin-bottom: 10px;
 }
 
 #search-term {
@@ -89,6 +100,8 @@ header {
 .artistImg {
 	border-radius: 50%;
 	float: right;
+	width: 74px;
+	height: 74px;
 }
 
 .artistName {
@@ -127,3 +140,192 @@ header {
 	width: 80%;
 	height: 585px;
 }
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+.bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+@media only screen and (max-width: 1024px) {
+
+	.spotifyPlaylist {
+	height: 400px;
+	}
+
+	.artistImg {
+		width: 65px;
+		height: 65px;
+	}
+
+	.artistName {
+		font-size: 1em;
+	}
+
+	.venue {
+		font-size: .9em;
+	}
+
+	.buy-tickets {
+		font-size: .6em;
+		padding: 5px 8px;
+	}
+
+	.concertListing {
+		padding: 5px;
+		margin-top: 4px;
+	}
+
+}
+
+@media only screen and (max-width: 768px) {
+
+	.spotifyPlaylist {
+	height: 450px;
+	}
+
+	.artistImg {
+		width: 55px;
+		height: 55px;
+	}
+
+	.venue {
+		font-size: .8em;
+	}
+
+	.buy-tickets {
+		font-size: .6em;
+		padding: 4px 6px;
+	}
+
+	.concertListing {
+		padding: 3px;
+		margin-top: 2px;
+	}
+
+	#powered-by-songkick-logo {
+		width: 100px;
+	    margin-top: 5px;
+	    margin-bottom: -15px;
+	}
+
+	#logo {
+		margin-bottom: 5px;
+	}
+
+	.instructions {
+		padding: 10px;
+		font-size: .9em;
+		margin-bottom: -3px;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+
+	.concertListing {
+		padding: 5px;
+		margin-top: 2px;
+		line-height: .9em;
+	}
+
+	.artistImg {
+		width: 50px;
+		height: 50px;
+	}
+
+	.buy-tickets {
+		font-size: .4em;
+		padding: 3px 4px;
+	}
+
+	.venue {
+		font-size: .6em;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+
+	.main-container {
+		display: block;
+		width: 95%
+	}
+
+	#concert-listings {
+		width: 95%;
+	}
+
+	#playlist-window {
+		width: 95%;
+		display: block;
+	}
+
+	.spotifyPlaylist {
+		height: 285px;
+		width: 90%;
+	}
+
+	.save-playlist {
+		padding: 8px 10px;
+		font-size: .8em;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

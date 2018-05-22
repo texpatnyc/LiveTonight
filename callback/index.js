@@ -48,7 +48,6 @@ function getConcertListingsFromSongKick(id) {
 				return b.popularity - a.popularity
 			});
 			createArtistList(concerts);
-			console.log(concerts);
 			displayConcertListings(concerts);
 
 		}
@@ -76,7 +75,7 @@ function renderResult(result) {
 		<div class='concertListing'>
 			<a href="https://www.songkick.com/artists/${result.performance[0].artist.id}">
 				<img src="https://images.sk-static.com/images/media/profile_images/artists/${result.performance[0].artist.id}/large_avatar" 
-				class="artistImg" alt="${result.performance[0].artist.displayName}" width='74' height='74'>
+				class="artistImg" alt="${result.performance[0].artist.displayName}">
 			</a>
 			<a href="https://www.songkick.com/artists/${result.performance[0].artist.id}">
 				<span class="artistName">${result.performance[0].artist.displayName}</span>
@@ -116,7 +115,7 @@ function getAccessToken() {
 
 const accessToken = getAccessToken();
 
-//const accessToken = 'BQBRe0Fsu7SgsYpvDGOtm0TMZ8wLDWdHLRnc9MlofyqXTl9kTZixoRJvWlXQswkqf_u5k4z67ix2QIu39Ey_V676QtvvLp6UINTR1n67w-FwZHGje2Kxs7Msd6cj2GWkt5rqTxCypW1a2Cw2km9sxz-NwYYLnLB0ENSHggr2euzUhnL3qp54re1Z_YCcTBDaaQRAqdCcEM0m-SAt0dUDv_g7vT37'
+// const accessToken = 'BQDP0hg4WkRrpdaB3XkSL_v0D2-vRp6let43EffTsgUhqzyXiBv_aIo9a2sMt3oZwpST96qBA6TbQddRyYxdiiE2nUnFFO6CZKH9QsyzTUd73YiTZXUqNDnW2uloQoU9jngpzFS1NKHTKm1R3j7iUhwa1X3a733ALnSrj1Y5X-HA48vJJDK-_DBbwZ4AJuR3L6LhhvbtzwgRw2BaeNh_fG-vF8vR'
 
 //Get artists from spotify
 const getArtistsFromSpotify = (artist) => {
