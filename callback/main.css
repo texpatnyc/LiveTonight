@@ -146,7 +146,7 @@ main {
 
 .spotifyPlaylist {
 	width: 80%;
-	height: 585px;
+	height: 440px;
 }
 
 .bottom {
@@ -193,7 +193,7 @@ main {
 @media only screen and (max-width: 768px) {
 
 	.spotifyPlaylist {
-	height: 450px;
+	height: 440px;
 	}
 
 	.artistImg {
