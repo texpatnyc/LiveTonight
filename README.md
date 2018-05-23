@@ -10,15 +10,15 @@ I go see live music as often as possible and love discovering new bands live.  I
 ## Screenshots
 Login Screen/Landing Page:
 
-![login screen](screenshots/StartPage.png)
+![login screen](ScreenShots/StartPage.png)
 
 Google Places API Auto-Complete:
 
-![google auto-complete](screenshots/GooglePlaces-Auto-Complete.png)
+![google auto-complete](ScreenShots/GooglePlaces-Auto-Complete.png)
 
 Concert Listings and Playlist:
 
-![main](screenshots/FullContent.png)
+![main](ScreenShots/FullContent.png)
 
 
 ## API's Used
